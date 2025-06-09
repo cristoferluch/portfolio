@@ -96,6 +96,11 @@
               "name": "Tailwind",
               "icon": "tailwind",
               "level": 1
+            },
+            {
+              "name": "Astro",
+              "icon": "astro",
+              "level": 1
             }
           ]
         },
