@@ -3,9 +3,9 @@ import {motion} from 'motion/react'
 import {Image} from 'astro:assets';
 import {getTitleAnimation} from '~/animation.js'
 import {getUI, getLocale} from '~/utils/i18n'
-import githubIcon from '../../public/contact/github-icon.svg';
-import instagramIcon from '../../public/contact/instagram-icon.svg';
-import linkedinIcon from '../../public/contact/linkedin-icon.svg';
+import githubIcon from '~/assets/contact/github-icon.svg';
+import instagramIcon from '~/assets/contact/instagram-icon.svg';
+import linkedinIcon from '~/assets/contact/linkedin-icon.svg';
 
 const locale = getLocale(Astro)
 
@@ -30,7 +30,6 @@ const formatted: string = date.toLocaleDateString('en-US', {
     month: 'long',
     day: 'numeric'
 });
-
 ---
 
 <section class="flex w-full flex-col gap-4 text-center lg:w-1/2 lg:text-left pt-8">
@@ -39,7 +38,7 @@ const formatted: string = date.toLocaleDateString('en-US', {
             {...getTitleAnimation(0.1)}
     >
 
-        <p class="mb-2 text-2xl font-bold sm:text-4xl text-center text-paper">
+        <p class="mb-2 text-2xl font-extrabold sm:text-3xl text-center text-black">
             {contact.title}
         </p>
     </motion.span>
@@ -70,9 +69,13 @@ const formatted: string = date.toLocaleDateString('en-US', {
             {...getTitleAnimation(0.1)}
     >
 
-        <p class="mb-2 text-xs font-light  text-center text-paper mt-10">
+        <p class="mb-2 text-sm sm:text-base font-light text-center text-black mt-10">
             Last updated: <span class="font-bold">{formatted}</span> |
-            Version: <span class="font-bold">{_metadata.version}</span> |
+            Version: <span class="font-bold">{_metadata.version}</span>
+
+        </p>
+
+        <p class="mb-2 text-sm sm:text-base font-light text-center text-black ">
             Author: <span class="font-bold">{_metadata.author}</span>
         </p>
     </motion.span>

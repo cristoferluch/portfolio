@@ -7,17 +7,20 @@
     --coral: rgb(247 111 83 / 1);
 }
 
+* {
+    font-family: "Poppins", sans-serif;
+}
+
 html {
     scroll-behavior: smooth;
 }
 
 html,
 body {
-    font-family: "Poppins", sans-serif;
     margin: 0;
 }
-body {
 
+body {
     background: var(--dark);
 }
 
@@ -25,30 +28,24 @@ footer {
     background: var(--text);
 }
 
-p {
-    color:  var(--text);
-    font-weight: 500;
-    font-style: normal;
-}
-
 h1 {
     color: var(--text);
-    font-family: "Poppins", sans-serif;
 }
 
 h2 {
     color: var(--text);
-    font-family: "Poppins", sans-serif;
 }
 
 .text-coral {
     color: var(--coral);
-    font-family: "Poppins", sans-serif;
+}
+
+.text-black {
+    color: var(--dark);
 }
 
 .text-paper {
-    color: var(--dark);
-    font-family: "Poppins", sans-serif;
+    color: var(--text);
 }
 
 .button-paper {

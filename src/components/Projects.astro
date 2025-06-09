@@ -4,7 +4,8 @@ import {Image} from "astro:assets";
 import {getTitleAnimation} from '~/animation.js'
 import {getUI, getLocale} from '~/utils/i18n'
 import SubTitle from "~/components/SubTitle.astro";
-import speedtracer from '../../public/projects/speedtracer.webp'
+import speedtracer from '~/assets/projects/speedtracer.webp'
+
 
 const locale = getLocale(Astro)
 
@@ -35,11 +36,11 @@ const imagesMap: imagesMapType = {
                         client:load
                         {...getTitleAnimation(0.1)}
                 >
-                    <p class="mt-20 text-4xl font-medium sm:text-4xl">
+                    <p class="mt-16 text-4xl font-medium sm:text-4xl text-paper">
                         {project.title}
                     </p>
 
-                    <p class="mt-6 text-2xl font-medium sm:text-3xl">
+                    <p class="mt-6 text-1xl font-medium sm:text-2xl text-paper">
                         {project.description}
                     </p>
 
@@ -62,7 +63,7 @@ const imagesMap: imagesMapType = {
                                 href={project.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                class="transition-bg flex items-center justify-center gap-2 rounded-xl px-6 py-4 transition-transform duration-150 hover:scale-[1.02] active:scale-[0.98] w-full border-dark bg-dark text-paper button-paper shadow-lg">
+                                class="transition-bg flex items-center justify-center gap-2 rounded-xl px-6 py-4 transition-transform duration-150 hover:scale-[1.02] active:scale-[0.98] w-full border-dark bg-dark text-black button-paper shadow-lg">
                             GitHub
                         </a>
                     </div>

@@ -14,8 +14,6 @@
     "@tailwindcss/vite": "^4.1.8",
     "astro": "^5.9.1",
     "motion": "^12.16.0",
-    "react": "^19.1.0",
-    "tailwind-merge": "^3.3.0",
-    "tailwindcss": "^4.1.8"
+    "tailwind-merge": "^3.3.0"
   }
 }
