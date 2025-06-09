@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import "tailwindcss";
+
+:root {
+    --dark: #1f1f1f;
+    --text: #d1cfc0;
+    --coral: rgb(247 111 83 / 1);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+html,
+body {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+}
+body {
+
+    background: var(--dark);
+}
+
+footer {
+    background: var(--text);
+}
+
+p {
+    color:  var(--text);
+    font-weight: 500;
+    font-style: normal;
+}
+
+h1 {
+    color: var(--text);
+    font-family: "Poppins", sans-serif;
+}
+
+h2 {
+    color: var(--text);
+    font-family: "Poppins", sans-serif;
+}
+
+.text-coral {
+    color: var(--coral);
+    font-family: "Poppins", sans-serif;
+}
+
+.text-paper {
+    color: var(--dark);
+    font-family: "Poppins", sans-serif;
+}
+
+.button-paper {
+    background: var(--text);
+    font-size: .9rem;
+}
+
+.container {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 1rem;
+    padding-left: 1rem;
+}

@@ -1,0 +1,173 @@
+{
+  "index": {
+    "header": {
+      "parts": [
+        { "text": "Hi ", "highlight": false },
+        { "text": "\n", "highlight": false },
+        { "text": "I’m ",  "highlight": false },
+        { "text": "Cristofer ",  "highlight": false },
+        { "text": "a ",  "highlight": false },
+        { "text": "\n",  "highlight": false },
+        { "text": "software ", "highlight": true },
+        { "text": "developer ", "highlight": true }
+      ]
+    },
+    "about": {
+      "title": "About",
+      "sections": [
+        {
+          "id": "intro",
+          "content": "Hi, my name is Cristofer. I'm a backend developer passionate about programming, specializing in building efficient and scalable solutions. I hold a degree in Systems Analysis and Development from the Federal Institute of Santa Catarina and have experience with Java, Go (Golang), among other technologies."
+        },
+        {
+          "id": "experience",
+          "content": "Throughout my career, I’ve worked on the development of ERP systems using Java (Servlets) and the creation of RESTful APIs for e-commerce platforms with Go (Golang), always prioritizing performance, scalability, security, and best development practices."
+        },
+        {
+          "id": "goal",
+          "content": "My main focus is to consistently deliver high-quality results, always striving for continuous improvement and excellence in every solution I develop."
+        }
+      ]
+    },
+    "projects": {
+      "title": "Projects",
+      "items": [
+        {
+          "id": "speedtracer",
+          "title": "SpeedTracer",
+          "description": "SpeedTracer is a lightweight Java utility designed to help developers measure and analyze the performance of their code execution. It provides detailed timing information for each step of your process along with memory usage metrics.",
+          "url": "https://github.com/cristoferluch/SpeedTracer",
+          "media": [
+              {
+                "src": "speedtracer",
+                "alt": "SpeedTracer interface screenshot"
+              }
+            ]
+        }
+      ]
+    },
+    "skills": {
+      "title": "Skills",
+      "categories": [
+        {
+          "title": "Programming Languages",
+          "items": [
+            {
+              "name": "Java",
+              "icon": "java",
+              "level": 3
+            },
+            {
+              "name": "Go",
+              "icon": "golang",
+              "level": 2
+            },
+            {
+              "name": "JavaScript",
+              "icon": "javascript",
+              "level": 2
+            },
+            {
+              "name": "Python",
+              "icon": "python",
+              "level": 1
+            }
+          ]
+        },
+        {
+          "title": "Frontend Development",
+          "items": [
+            {
+              "name": "HTML5",
+              "icon": "html",
+              "level": 3
+            },
+            {
+              "name": "CSS",
+              "icon": "css",
+              "level": 2
+            },
+            {
+              "name": "jQuery",
+              "icon": "jquery",
+              "level": 2
+            },
+            {
+              "name": "Tailwind",
+              "icon": "tailwind",
+              "level": 1
+            }
+          ]
+        },
+        {
+          "title": "Databases",
+          "items": [
+            {
+              "name": "SQL Server",
+              "icon": "sqlserver",
+              "level": 3
+            },
+            {
+              "name": "PostgreSQL",
+              "icon": "postgresql",
+              "level": 2
+            },
+            {
+              "name": "MySQL",
+              "icon": "mysql",
+              "level": 1
+            }
+          ]
+        },
+        {
+          "title": "Tools",
+          "items": [
+            {
+              "name": "Postman",
+              "icon": "postman",
+              "level": 2
+            },
+            {
+              "name": "Git",
+              "icon": "git",
+              "level": 2
+            }
+          ]
+        }
+      ],
+        "levelSystem": {
+        "1": "Beginner",
+        "2": "Intermediate",
+        "3": "Advanced"
+      }
+    },
+    "contact": {
+      "title": "Contact",
+      "channels": [
+        {
+          "platform": "LinkedIn",
+          "url": "https://www.linkedin.com/in/cristofer-luchtenberg/",
+          "icon": "linkedin",
+          "cta": "Connect professionally"
+        },
+        {
+          "platform": "GitHub",
+          "url": "https://github.com/cristoferluch",
+          "icon": "github",
+          "cta": "View my projects"
+        },
+        {
+          "platform": "Instagram",
+          "url": "https://www.instagram.com/cristoferluch/",
+          "icon": "instagram",
+          "cta": "Follow me"
+        }
+      ]
+    },
+    "_metadata": {
+      "lastUpdated": "2025-06-09",
+      "version": "1.1",
+      "author": "Cristofer Luchtenberg"
+    }
+  }
+}

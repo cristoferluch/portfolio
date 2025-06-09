@@ -1,0 +1,80 @@
+---
+import {motion} from 'motion/react'
+import {Image} from 'astro:assets';
+import {getTitleAnimation} from '~/animation.js'
+import {getUI, getLocale} from '~/utils/i18n'
+import githubIcon from '../../public/contact/github-icon.svg';
+import instagramIcon from '../../public/contact/instagram-icon.svg';
+import linkedinIcon from '../../public/contact/linkedin-icon.svg';
+
+const locale = getLocale(Astro)
+
+const {
+    index: {contact, _metadata},
+} = getUI(locale)
+
+
+type IconMapType = {
+    [key: string]: ImageMetadata;
+};
+
+const iconMap: IconMapType = {
+    'github': githubIcon,
+    'instagram': instagramIcon,
+    'linkedin': linkedinIcon,
+}
+
+const date: Date = new Date(_metadata.lastUpdated);
+const formatted: string = date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+});
+
+---
+
+<section class="flex w-full flex-col gap-4 text-center lg:w-1/2 lg:text-left pt-8">
+    <motion.span
+            client:load
+            {...getTitleAnimation(0.1)}
+    >
+
+        <p class="mb-2 text-2xl font-bold sm:text-4xl text-center text-paper">
+            {contact.title}
+        </p>
+    </motion.span>
+
+    <motion.span
+            client:load
+            {...getTitleAnimation(0.1)}
+    >
+
+        <div class="flex flex-row justify-center gap-10 mt-10">
+
+            {contact.channels.map(channel => (
+                    <a
+                            href={channel.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                    >
+                        <Image class="w-8 cursor-pointer" src={iconMap[channel.icon]} alt=""/>
+                    </a>
+            ))}
+
+        </div>
+    </motion.span>
+
+
+    <motion.span
+            client:load
+            {...getTitleAnimation(0.1)}
+    >
+
+        <p class="mb-2 text-xs font-light  text-center text-paper mt-10">
+            Last updated: <span class="font-bold">{formatted}</span> |
+            Version: <span class="font-bold">{_metadata.version}</span> |
+            Author: <span class="font-bold">{_metadata.author}</span>
+        </p>
+    </motion.span>
+</section>
+

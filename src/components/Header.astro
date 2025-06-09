@@ -1,0 +1,42 @@
+---
+import {motion} from 'motion/react'
+import {getTitleAnimation} from '~/animation.js'
+import {getUI, getLocale} from '~/utils/i18n'
+import Title from "~/components/Title.astro"
+
+let titleAnimationCounter = 0
+function getNewAnimationDelay() {
+    titleAnimationCounter++
+    return titleAnimationCounter * 0.15
+}
+
+function getHeroTitleAnimation() {
+    return getTitleAnimation(getNewAnimationDelay())
+}
+
+const locale = getLocale(Astro)
+
+const {
+    index: {header: {parts}}
+} = getUI(locale)
+---
+
+<header class="flex w-full flex-col items-center gap-[20%] text-center lg:gap-[25%] pt-10">
+
+    <div class="flex h-full flex-col items-center justify-center">
+        <Title class="relative  text-center font-normal text-4xl md:text-8xl lg:px-0 lg:text-8xl">
+            {parts.map(part => part.text !== '\n' ? (
+                            <motion.span
+                                    client:load
+                                    {...getHeroTitleAnimation()}
+                                    className={part.highlight ? 'italic text-coral' : ''}
+                            >
+                                {part.text}
+                            </motion.span>
+                ) : (
+                            <br class=" md:block"/>
+                )
+            )}
+        </Title>
+    </div>
+</header>

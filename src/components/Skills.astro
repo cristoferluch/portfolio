@@ -1,0 +1,198 @@
+---
+import {motion} from 'motion/react'
+import {Image} from "astro:assets";
+import {getTitleAnimation} from '~/animation.js'
+import {getUI, getLocale} from '~/utils/i18n'
+import SubTitle from "~/components/SubTitle.astro";
+
+import javaIcon from '../../public/skills/Java.svg'
+import golangIcon from '../../public/skills/Golang.svg'
+import javascriptIcon from '../../public/skills/JavaScript.svg'
+import pythonIcon from '../../public/skills/Python.svg'
+import htmlIcon from '../../public/skills/HTML5.svg'
+import cssIcon from '../../public/skills/CSS3.svg'
+import jqueryIcon from '../../public/skills/jQuery.svg'
+import sqlserverIcon from '../../public/skills/MicrosoftSQLServer.svg'
+import postgresqlIcon from '../../public/skills/PostgresSQL.svg'
+import postmanIcon from '../../public/skills/Postman.svg'
+import gitIcon from '../../public/skills/Git.svg'
+import tailwindIcon from '../../public/skills/Tailwind.svg'
+import astroIcon from '../../public/skills/Astro.svg'
+import mysqlIcon from '../../public/skills/MySQL.svg'
+
+let titleAnimationCounter = 0
+function getNewAnimationDelay() {
+    titleAnimationCounter++
+    return titleAnimationCounter * 0.03
+}
+
+function getHeroTitleAnimation() {
+    return getTitleAnimation(getNewAnimationDelay())
+}
+
+type IconMapType = {
+    [key: string]: ImageMetadata;
+};
+
+const iconMap: IconMapType = {
+    'java': javaIcon,
+    'golang': golangIcon,
+    'javascript': javascriptIcon,
+    'python': pythonIcon,
+    'html': htmlIcon,
+    'css': cssIcon,
+    'jquery': jqueryIcon,
+    'sqlserver': sqlserverIcon,
+    'postgresql': postgresqlIcon,
+    'postman': postmanIcon,
+    'git': gitIcon,
+    'tailwind': tailwindIcon,
+    'astro': astroIcon,
+    'mysql': mysqlIcon,
+}
+
+const locale = getLocale(Astro)
+
+const {
+    index: {skills}
+} = getUI(locale)
+
+type SkillsMapType = {
+    [key: number]: string;
+};
+
+const skillsMap: SkillsMapType = skills.levelSystem;
+---
+
+<section class="relative flex w-full flex-col  text-start ">
+
+    <motion.span
+            client:load
+            {...getTitleAnimation(0.6)}
+    >
+        <SubTitle>{skills.title}</SubTitle>
+    </motion.span>
+
+    <div class="mt-6 flex flex-col gap-6 lg:flex-row lg:justify-between lg:gap-2">
+        <div class="flex w-full flex-col ">
+            <motion.button
+                    client:load
+                    {...getTitleAnimation(0.7)}
+                    className=" whitespace-nowrap"
+            >
+                <div class="flex gap-10 overflow-x-auto overflow-y-clip ">
+                    {skills.categories.map(category => (
+                            <p class="category-tab">{category.title}</p>
+                    ))}
+                </div>
+
+            </motion.button>
+
+            <div class="sticky top-6 h-fit w-full lg:w-3/5 pt-6">
+                <div class="relative w-full">
+
+                    {skills.categories.map(category => (
+                            <div class="relative h-full w-full flex flex-row gap-9 icons pt-6">
+
+                                {category.items.map(item => (
+                                        <motion.span
+                                                client:visible
+                                                {...getHeroTitleAnimation()}
+                                        >
+                                            <div class="group relative inline-block">
+                                                <div class="hidden group-hover:block absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 bg-[#101010] text-[var(--text)] text-sm font-bold px-2 py-2 rounded-xl whitespace-nowrap">
+                                                    {item.name} | {skillsMap[item?.level]}
+                                                </div>
+
+                                                <Image class="w-20 cursor-pointer icon-item rounded-xl bg-[#353535] p-2.5 border-[#bdbbae]"
+                                                       src={iconMap[item.icon]}
+                                                       alt=""
+                                                />
+                                            </div>
+
+                                        </motion.span>
+                                ))}
+                            </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script is:inline>
+    const categories = document.querySelectorAll('.category-tab');
+    const iconContainers = document.querySelectorAll('.icons');
+
+    function changeToCategory({target}) {
+        let targetEl = target.closest('.category-tab');
+
+        if (!targetEl) return;
+
+        const index = Array.from(categories).indexOf(targetEl);
+
+        for (let i = 0; i < categories.length; i += 1) {
+            const category = categories[i]
+
+            if (i % 4 === index) {
+                category.setAttribute('data-active', 'true')
+            } else {
+                category.removeAttribute('data-active')
+            }
+        }
+
+        iconContainers.forEach((container, i) => {
+            if (i === index) {
+                container.classList.remove('hidden');
+
+                const icons = container.querySelectorAll('.icon-item');
+                icons.forEach((icon, iconIndex) => {
+                    icon.style.opacity = '0';
+                    icon.style.transform = 'translateY(20px)';
+                    icon.style.filter = 'blur(4px)';
+
+                    setTimeout(() => {
+                        icon.style.transition = `all 0.5s ${iconIndex * 0.05}s`;
+                        icon.style.opacity = '1';
+                        icon.style.transform = 'translateY(0)';
+                        icon.style.filter = 'blur(0)';
+                    }, 10);
+                });
+            } else {
+                container.classList.add('hidden');
+            }
+        });
+    }
+
+    categories.forEach(category => {
+        category.addEventListener('click', changeToCategory);
+    });
+
+    if (categories.length > 0) {
+        changeToCategory({target: categories[0]});
+    }
+</script>
+<style>
+
+.category-tab[data-active="true"] {
+    background: #353535;
+    }
+
+.category-tab {
+    border-radius: .5rem;
+    padding: .5rem 1rem;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    font-weight: 500;
+    color: var(--text);
+    transition: .3s;
+    }
+
+.category-tab:hover {
+    cursor: pointer;
+    transition: .3s;
+    background: #353535;
+    }
+
+
+</style>
